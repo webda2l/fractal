@@ -168,7 +168,7 @@ class Manager
 
             // Matches multiple instances of 'something(foo|bar|baz)' in the string
             // I guess it ignores : so you could use anything, but probably dont do that
-            preg_match_all('/([\w]+)\(([^\)]+)\)/', $allModifiersStr, $allModifiersArr);
+            preg_match_all('/([\w]+)(\(([^\)]+)\))?/', $allModifiersStr, $allModifiersArr);
 
             // [0] is full matched strings...
             $modifierCount = count($allModifiersArr[0]);
@@ -180,7 +180,7 @@ class Manager
                 $modifierName = $allModifiersArr[1][$modifierIt];
 
                 // and [2] is delimited params
-                $modifierParamStr = $allModifiersArr[2][$modifierIt];
+                $modifierParamStr = $allModifiersArr[3][$modifierIt];
 
                 // Make modifier array key with an array of params as the value
                 $modifierArr[$modifierName] = explode($this->paramDelimiter, $modifierParamStr);
