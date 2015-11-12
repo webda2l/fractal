@@ -239,7 +239,7 @@ class TransformerAbstractTest extends \PHPUnit_Framework_TestCase
         $transformer = m::mock('League\Fractal\TransformerAbstract')->makePartial();
 
         $transformer->shouldReceive('includeBook')
-            ->with(m::any(), m::type('\League\Fractal\ParamBag'))
+            ->with(m::any(), m::type('\League\Fractal\ParamBag'), 'book')
             ->once();
 
         $transformer->setAvailableIncludes(['book']);
